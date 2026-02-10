@@ -1,0 +1,88 @@
+"use server";
+import { revalidatePath } from "next/cache";
+import { createBookRecommendation, deleteBookRecommendation } from "../api/book";
+import { BookRecommendation } from "../_types/book";
+import { getSession } from "../_lib/session";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+
+// Function to fetch recommendations from Django API
+const fetchRecommendationsFromDjango = async (query: string, userId: string): Promise<BookRecommendation[]> => {
+    try {
+        const response = await axios.post("http://127.0.0.1:8000/api/recommend/query/", {
+            query: query,
+            top_k: 5
+        });
+
+        const htmlContent = response.data.recommendations;
+        const recommendations: BookRecommendation[] = [];
+
+        // Parse HTML: <li><strong>Title</strong> by Author - Description</li>
+        const regex = /<li><strong>(.*?)<\/strong> by (.*?) - (.*?)<\/li>/g;
+        let match;
+
+        while ((match = regex.exec(htmlContent)) !== null) {
+            recommendations.push({
+                id: uuidv4(),
+                title: match[1].trim(),
+                author: match[2].trim(),
+                description: match[3].trim(),
+                query: query,
+                userId: userId,
+                recommendationDate: new Date().toISOString()
+            });
+        }
+
+        return recommendations;
+    } catch (error) {
+        console.error("Error fetching from Django API:", error);
+        throw error;
+    }
+};
+
+export const searchBooksAction = async (
+    prevState: any,
+    formData: FormData
+) => {
+    const user = await getSession();
+    if (!user) {
+        return { error: "User not authenticated" };
+    }
+
+    const query = formData.get("query") as string;
+    if (!query || query.trim().length === 0) {
+        return { error: "Please enter a search query" };
+    }
+
+    try {
+        const recommendations = await fetchRecommendationsFromDjango(query, user.id.toString());
+
+        if (recommendations.length === 0) {
+            return { error: "No recommendations found. Try a different query." };
+        }
+
+        // Store all recommendations
+        await Promise.all(recommendations.map(book => createBookRecommendation(book)));
+
+        revalidatePath("/books");
+        return { success: `Generated ${recommendations.length} recommendations for "${query}"` };
+    } catch (error) {
+        console.log("error generating book recommendations", error);
+        return { error: "Error generating recommendations from AI" };
+    }
+}
+
+export const deleteBookAction = async (
+    prevState: any,
+    formData: FormData
+) => {
+    const id = formData.get("id") as string;
+    try {
+        await deleteBookRecommendation(id);
+        revalidatePath("/books");
+        return { success: "Recommendation removed" };
+    } catch (error) {
+        console.log("error deleting book", error);
+        return { error: "Error removing recommendation" };
+    }
+}
