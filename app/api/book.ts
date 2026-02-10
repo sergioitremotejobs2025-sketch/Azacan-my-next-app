@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BookRecommendation } from "../_types/book";
 
-const API_URL = "http://localhost:3002";
+const API_URL = process.env.JSON_SERVER_URL || "http://localhost:3002";
 
 export const getBooks = async (userId: string) => {
     const response = await axios.get(`${API_URL}/books?userId=${userId}`);

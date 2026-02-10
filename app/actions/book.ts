@@ -6,10 +6,16 @@ import { getSession } from "../_lib/session";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
+export type ActionState = {
+    error?: string;
+    success?: string;
+};
+
 // Function to fetch recommendations from Django API
 const fetchRecommendationsFromDjango = async (query: string, userId: string): Promise<BookRecommendation[]> => {
     try {
-        const response = await axios.post("http://127.0.0.1:8000/api/recommend/query/", {
+        const backendUrl = process.env.BACKEND_API_URL || "http://localhost:8000";
+        const response = await axios.post(`${backendUrl}/api/recommend/query/`, {
             query: query,
             top_k: 5
         });
@@ -41,9 +47,9 @@ const fetchRecommendationsFromDjango = async (query: string, userId: string): Pr
 };
 
 export const searchBooksAction = async (
-    prevState: any,
+    prevState: ActionState | null,
     formData: FormData
-) => {
+): Promise<ActionState> => {
     const user = await getSession();
     if (!user) {
         return { error: "User not authenticated" };
@@ -73,9 +79,9 @@ export const searchBooksAction = async (
 }
 
 export const deleteBookAction = async (
-    prevState: any,
+    prevState: ActionState | null,
     formData: FormData
-) => {
+): Promise<ActionState> => {
     const id = formData.get("id") as string;
     try {
         await deleteBookRecommendation(id);

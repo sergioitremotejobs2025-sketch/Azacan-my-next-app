@@ -5,7 +5,12 @@ import { UserType } from "../_types/user"
 import { redirect } from "next/navigation"
 import { setSession, deleteSession } from "../_lib/session"
 
-const API_URL = "http://localhost:3002"
+const API_URL = process.env.JSON_SERVER_URL || "http://localhost:3002"
+
+export type ActionState = {
+    error?: string;
+    success?: string;
+};
 
 export const loginAction = async (formData: FormData) => {
     const email = formData.get("email") as string;
@@ -29,7 +34,7 @@ export const loginAction = async (formData: FormData) => {
     }
 }
 
-export const registerAction = async (prevState: any, formData: FormData) => {
+export const registerAction = async (prevState: ActionState | null, formData: FormData): Promise<ActionState> => {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
