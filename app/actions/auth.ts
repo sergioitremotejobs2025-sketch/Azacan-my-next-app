@@ -29,6 +29,53 @@ export const loginAction = async (formData: FormData) => {
     }
 }
 
+export const registerAction = async (prevState: any, formData: FormData) => {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const confirmPassword = formData.get("confirmPassword") as string;
+
+    // Validation
+    if (!name || !email || !password || !confirmPassword) {
+        return { error: "All fields are required" };
+    }
+
+    if (password !== confirmPassword) {
+        return { error: "Passwords do not match" };
+    }
+
+    if (password.length < 6) {
+        return { error: "Password must be at least 6 characters" };
+    }
+
+    try {
+        // Check if user already exists
+        const existingUsers = await axios.get(`${API_URL}/users?email=${email}`);
+        if (existingUsers.data.length > 0) {
+            return { error: "An account with this email already exists" };
+        }
+
+        // Create new user
+        const response = await axios.post(`${API_URL}/users`, {
+            name,
+            email,
+            password,
+        });
+
+        const user: UserType = response.data;
+
+        // Set session and redirect
+        await setSession(user.name, user.email, user.id.toString());
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            return { error: "Failed to create account. Please try again." };
+        }
+        throw error;
+    }
+
+    redirect("/books");
+}
+
 export const logoutAction = async () => {
     // json-server filtering doesn't have a logout endpoint, so we just redirect
     await deleteSession()
