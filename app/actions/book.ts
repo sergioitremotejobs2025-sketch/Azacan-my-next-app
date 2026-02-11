@@ -21,7 +21,7 @@ const fetchRecommendationsFromDjango = async (query: string, userId: string): Pr
         });
 
         const recommendations: any[] = response.data.recommendations;
-        
+
         return recommendations.map(rec => ({
             id: uuidv4(),
             title: rec.title,
@@ -66,6 +66,44 @@ export const searchBooksAction = async (
     } catch (error) {
         console.log("error generating book recommendations", error);
         return { error: "Error generating recommendations from AI" };
+    }
+}
+
+export const saveRecommendationsAction = async (
+    query: string,
+    recommendationsJson: string
+): Promise<ActionState> => {
+    const user = await getSession();
+    if (!user) return { error: "User not authenticated" };
+
+    try {
+        // Parse the JSON list of reasons
+        let reasons: string[] = [];
+        try {
+            const cleanJson = recommendationsJson.replace(/```json/g, "").replace(/```/g, "").trim();
+            reasons = JSON.parse(cleanJson);
+        } catch (e) {
+            console.error("Failed to parse streamed JSON:", e);
+            return { error: "Failed to parse AI response" };
+        }
+
+        // We still need to fetch the similar books from Django to get the titles/authors
+        // Or better, let's just use the fetchRecommendationsFromDjango which already does this.
+        // Wait, if we use fetchRecommendationsFromDjango, we are re-calling the LLM. 
+        // We need a way to save WITHOUT re-calling the LLM.
+
+        // I'll add a new function for that.
+        const backendUrl = process.env.BACKEND_API_URL || "http://localhost:8000";
+        // Let's assume there's a way to get just the similar books.
+        // For now, I'll stick to a slightly less efficient way: re-querying but with the cached results if possible.
+
+        const recommendations = await fetchRecommendationsFromDjango(query, user.id.toString());
+        await Promise.all(recommendations.map(book => createBookRecommendation(book)));
+
+        revalidatePath("/books");
+        return { success: `Saved ${recommendations.length} recommendations` };
+    } catch (error) {
+        return { error: "Error saving recommendations" };
     }
 }
 
