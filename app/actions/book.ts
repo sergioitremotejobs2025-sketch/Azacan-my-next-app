@@ -20,26 +20,17 @@ const fetchRecommendationsFromDjango = async (query: string, userId: string): Pr
             top_k: 5
         });
 
-        const htmlContent = response.data.recommendations;
-        const recommendations: BookRecommendation[] = [];
-
-        // Parse HTML: <li><strong>Title</strong> by Author - Description</li>
-        const regex = /<li><strong>(.*?)<\/strong> by (.*?) - (.*?)<\/li>/g;
-        let match;
-
-        while ((match = regex.exec(htmlContent)) !== null) {
-            recommendations.push({
-                id: uuidv4(),
-                title: match[1].trim(),
-                author: match[2].trim(),
-                description: match[3].trim(),
-                query: query,
-                userId: userId,
-                recommendationDate: new Date().toISOString()
-            });
-        }
-
-        return recommendations;
+        const recommendations: any[] = response.data.recommendations;
+        
+        return recommendations.map(rec => ({
+            id: uuidv4(),
+            title: rec.title,
+            author: rec.author || "Unknown Author",
+            description: rec.description || rec.reason || "No description available.",
+            query: query,
+            userId: userId,
+            recommendationDate: new Date().toISOString()
+        }));
     } catch (error) {
         console.error("Error fetching from Django API:", error);
         throw error;
