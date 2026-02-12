@@ -29,7 +29,8 @@ const fetchRecommendationsFromDjango = async (query: string, userId: string): Pr
             description: rec.description || rec.reason || "No description available.",
             query: query,
             userId: userId,
-            recommendationDate: new Date().toISOString()
+            recommendationDate: new Date().toISOString(),
+            productId: rec.product_id || rec.productId
         }));
     } catch (error) {
         console.error("Error fetching from Django API:", error);

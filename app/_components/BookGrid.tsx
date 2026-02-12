@@ -45,19 +45,33 @@ export default function BookGrid({ books }: { books: BookRecommendation[] }) {
                             <span className="text-blue-600/50">#{book.query}</span>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                            <Link
-                                href={`/books/view/${book.id}`}
-                                className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gray-900 text-white font-bold hover:bg-black transition-all active:scale-95 shadow-lg shadow-gray-200"
-                            >
-                                <FiEye size={18} />
-                                <span>Learn More</span>
-                            </Link>
-                            <DeleteButton
-                                action={deleteBookAction}
-                                id={book.id}
-                                confirmMessage={`Are you sure you want to remove the recommendation for "${book.title}"?`}
-                            />
+                        <div className="flex flex-col gap-3">
+                            <div className="flex items-center gap-3">
+                                <Link
+                                    href={`/books/view/${book.id}`}
+                                    className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gray-900 text-white font-bold hover:bg-black transition-all active:scale-95 shadow-lg shadow-gray-200"
+                                >
+                                    <FiEye size={18} />
+                                    <span>Learn More</span>
+                                </Link>
+                                <DeleteButton
+                                    action={deleteBookAction}
+                                    id={book.id}
+                                    confirmMessage={`Are you sure you want to remove the recommendation for "${book.title}"?`}
+                                />
+                            </div>
+
+                            {book.productId && (
+                                <a
+                                    href={`http://localhost:8000/product/${book.productId}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-blue-50 text-blue-600 font-bold hover:bg-blue-100 transition-all active:scale-95 border border-blue-100 text-sm"
+                                >
+                                    <FiBook size={16} />
+                                    <span>View in Backend</span>
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>
