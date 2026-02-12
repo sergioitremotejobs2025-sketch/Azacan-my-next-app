@@ -80,7 +80,12 @@ export const saveRecommendationsAction = async (
         // Parse the JSON list of reasons
         let reasons: string[] = [];
         try {
-            const cleanJson = recommendationsJson.replace(/```json/g, "").replace(/```/g, "").trim();
+            // Strip any <think>...</think> blocks and Markdown code blocks
+            const cleanJson = recommendationsJson
+                .replace(/<think>[\s\S]*?<\/think>/g, "")
+                .replace(/```json/g, "")
+                .replace(/```/g, "")
+                .trim();
             reasons = JSON.parse(cleanJson);
         } catch (e) {
             console.error("Failed to parse streamed JSON:", e);
@@ -89,21 +94,36 @@ export const saveRecommendationsAction = async (
 
         // We still need to fetch the similar books from Django to get the titles/authors
         // Or better, let's just use the fetchRecommendationsFromDjango which already does this.
-        // Wait, if we use fetchRecommendationsFromDjango, we are re-calling the LLM. 
-        // We need a way to save WITHOUT re-calling the LLM.
+        let recommendations: BookRecommendation[] = [];
+        try {
+            recommendations = await fetchRecommendationsFromDjango(query, user.id.toString());
+        } catch (fetchError) {
+            console.error("Failed to fetch formal recommendations from backend:", fetchError);
+            return { error: "Failed to connect to AI backend for saving" };
+        }
 
-        // I'll add a new function for that.
-        const backendUrl = process.env.BACKEND_API_URL || "http://localhost:8000";
-        // Let's assume there's a way to get just the similar books.
-        // For now, I'll stick to a slightly less efficient way: re-querying but with the cached results if possible.
+        if (recommendations.length === 0) {
+            return { error: "No recommendations found to save" };
+        }
 
-        const recommendations = await fetchRecommendationsFromDjango(query, user.id.toString());
-        await Promise.all(recommendations.map(book => createBookRecommendation(book)));
+        // Save books SEQUENTIALLY to avoid JSON server write conflicts
+        // This is much more stable for small file-based databases
+        for (const book of recommendations) {
+            try {
+                await createBookRecommendation(book);
+                // Tiny delay to allow JSON server to finish writing/reloading
+                await new Promise(resolve => setTimeout(resolve, 100));
+            } catch (saveError) {
+                console.error(`Failed to save book "${book.title}":`, saveError);
+                // We'll continue anyway for other books, but maybe notify at end
+            }
+        }
 
         revalidatePath("/books");
-        return { success: `Saved ${recommendations.length} recommendations` };
-    } catch (error) {
-        return { error: "Error saving recommendations" };
+        return { success: `Successfully processed ${recommendations.length} recommendations` };
+    } catch (error: any) {
+        console.error("General error in saveRecommendationsAction:", error);
+        return { error: `Error saving recommendations: ${error.message || "Unknown error"}` };
     }
 }
 

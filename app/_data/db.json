@@ -404,6 +404,213 @@
       "query": "amor",
       "userId": "1",
       "recommendationDate": "2026-01-09T09:59:55.298Z"
+    },
+    {
+      "id": "e5d9cbe7-9d11-4f02-b500-720b495b0d6f",
+      "title": "CAMILO JOSÉ CELA",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "This book is a direct match to the customer's request as it features Camilo José Cela as both author and title.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:43:54.848Z"
+    },
+    {
+      "id": "50fe74b3-8282-49d3-b71c-66c0b12c1ce6",
+      "title": "CAMILO JOSÉ CELA",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "Similar to the previous recommendation, this book also directly matches the query with Camilo José Cela as both title and author. The edition features his work \"Nuevo viaje a La Alcarria\".",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:43:54.848Z"
+    },
+    {
+      "id": "836489bc-870d-4361-92fa-1924573364ce",
+      "title": "EL CAMINO DE SANTIAGO. POR LA RUTA DE SAN MIGUEL. CAMINO FRANCÉS",
+      "author": "Unknown Author",
+      "description": "Although the author is unknown, this book features Camilo José Cela's work in its title and content, as it discusses his journey on the Camino de Santiago.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:43:54.848Z"
+    },
+    {
+      "id": "720c3e7c-6284-4d74-bc07-37b62dc6ee24",
+      "title": "CAMILO JOSÉ CELA",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "This edition of Camilo José Cela's works includes three of his notable writings: Cuaderno del Guadarrama, Ávila y Judíos, moros y cristianos. It is a great choice for readers interested in exploring the author's work.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:43:54.848Z"
+    },
+    {
+      "id": "689ec9ec-fa22-429b-bb83-bcddf88b283b",
+      "title": "CAMILO JOSÉ CELA",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "This book is a collection of works by Camilo José Cela, making it a direct match for the customer's request.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:45:31.645Z"
+    },
+    {
+      "id": "13019313-12d0-4dbc-8b01-c494242ff0b3",
+      "title": "CAMILIO JOSÉ CELA",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "Similar to the previous recommendation, this book is also a collection of works by Camilo José Cela, ensuring that it meets the customer's query.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:45:31.646Z"
+    },
+    {
+      "id": "3cafaf7d-5b61-4871-af84-0873a1c69be9",
+      "title": "NUEVO VIAJE A LA ALCARRIA",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "As part of the \"Obras Completas\" series, this book is a significant work by Camilo José Cela, making it a relevant recommendation for customers interested in his writings.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:45:31.646Z"
+    },
+    {
+      "id": "cace31b1-cafe-4b5e-877e-5a19b8d53ffd",
+      "title": "CUADERNO DEL GUADARRAMA, ÁVILA Y JUDÍOS, MOROS Y CRISTIANOS",
+      "author": "CAMILO JOSÉ CELA",
+      "description": "This book includes three of Camilo José Cela's notable works, further solidifying its relevance to the customer's request.",
+      "query": "Camilo Jose Cela",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:45:31.647Z"
+    },
+    {
+      "id": "2e65895b-054e-4e04-b750-393d06964c34",
+      "title": "HACIA LA FUNDACION",
+      "author": "ISAAC ASIMOV",
+      "description": "As a renowned science fiction author, Isaac Asimov is often associated with the genre. This book's description suggests it may be part of his Foundation series, which is a cornerstone of science fiction literature.",
+      "query": "science fiction",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:47:41.918Z"
+    },
+    {
+      "id": "219ff04e-bb6f-4610-b60a-cefe82757c36",
+      "title": "LOS PREMIOS HUGO 1970-1972",
+      "author": "VARIOS AUTORES",
+      "description": "The mention of \"Premios Hugo\" in the title indicates that this book contains science fiction works. The Premios Hugo are awards given to outstanding science fiction and fantasy works, making this collection likely to contain science fiction stories.",
+      "query": "science fiction",
+      "userId": "50c4",
+      "recommendationDate": "2026-02-10T12:47:41.918Z"
+    },
+    {
+      "id": "3ec77fff-600e-444a-9da4-6ac2fee754c5",
+      "title": "MARTÍ BIÓGRAFO",
+      "author": "VARIOS AUTORES",
+      "description": "Although the title doesn't explicitly mention Mars, it includes \"Marti\" which is likely referring to José Martí, a Cuban national hero who wrote about exploration and travel. The subtitle suggests that the book discusses historical discourse related to exploration.",
+      "query": "Mars exploration",
+      "userId": "2",
+      "recommendationDate": "2026-02-10T17:10:11.433Z"
+    },
+    {
+      "id": "5a4b0615-e639-4cd8-bf5e-1756e79c4536",
+      "title": "VISITOR FROM ANOTHER PLANET",
+      "author": "GEORGE P. McCALLUM",
+      "description": "This book's title suggests a connection to extraterrestrial life, which could be related to Mars exploration as humans often explore other planets for signs of life.",
+      "query": "Mars exploration",
+      "userId": "2",
+      "recommendationDate": "2026-02-10T17:10:11.432Z"
+    },
+    {
+      "id": "8cf7396c-1328-4e0f-bf8c-8693c2733b22",
+      "title": "EL SAHARA. Enciclopedia de la Naturaleza-13",
+      "author": "ADELAIDE CATALISANO Y BRUNO MASSA",
+      "description": "While this book is primarily about the Sahara desert, it's part of an encyclopedia series that covers various aspects of nature. This could be relevant to Mars exploration as scientists study the Martian terrain and geology.",
+      "query": "Mars exploration",
+      "userId": "2",
+      "recommendationDate": "2026-02-10T17:10:11.433Z"
+    },
+    {
+      "id": "8ef12c0d-a02d-4718-85d7-fd7146cf264d",
+      "title": "VIAJAR PERDIENDO EL SUR",
+      "author": "RODRIGO FERNÁNDEZ MIRANDA",
+      "description": "Although this book's title doesn't directly relate to space or Mars, it discusses tourism and globalization. This could be tangentially related to the idea of humans exploring other planets as a form of \"tourism\" in space.",
+      "query": "Mars exploration",
+      "userId": "2",
+      "recommendationDate": "2026-02-10T17:10:11.433Z"
+    },
+    {
+      "id": "380f725f-e560-45c6-800b-7775653adf82",
+      "title": "EL YOGA Y LA TRADICIÓN HINDÚ",
+      "author": "JEAN VARENNE",
+      "description": "This book is a comprehensive introduction to yoga and its roots in Hindu tradition, making it a great match for customers interested in learning about the history and philosophy of yoga.",
+      "query": "yoga",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T10:07:37.663Z"
+    },
+    {
+      "id": "0e6b9bfc-543c-43ca-9e37-5d74d0500e70",
+      "title": "MUDRAS. El poder del Yoga en tus manos",
+      "author": "GERTRUD HIRSCHI",
+      "description": "As this book focuses specifically on the practice of mudras (hand gestures) in yoga, it is an excellent choice for customers looking to deepen their understanding and practice of yoga.",
+      "query": "yoga",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T10:07:37.664Z"
+    },
+    {
+      "id": "446c7670-fc05-4c82-8d48-0025481501bf",
+      "title": "YOGA EN CASA",
+      "author": "VARIOS AUTORES",
+      "description": "With its practical approach to practicing yoga at home, this book is perfect for customers looking for accessible and convenient ways to incorporate yoga into their daily lives.",
+      "query": "yoga",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T10:07:37.665Z"
+    },
+    {
+      "id": "8fa85b12-fb35-45a8-9944-e47739cb6cd7",
+      "title": "LÁ TRADICIÓN DEL YOGA",
+      "author": "GEORG FEUERSTEIN",
+      "description": "This extensive volume explores the history, literature, philosophy, and practice of yoga, making it a valuable resource for customers seeking a thorough understanding of yoga's evolution and development over time.",
+      "query": "yoga",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T10:07:37.665Z"
+    },
+    {
+      "id": "77e521cf-a083-4f59-82ba-6502d6bd15b1",
+      "title": "SOLITARIO DE AMOR",
+      "author": "CRISTINA PERI ROSSI",
+      "description": "Ediciones Grijalbo, S.A. Barcelona. 1988. 13,2 X 20 cm. 185pp. Rústica. En buen estado de conservación.Con una ligera firma con lapicero. Novela de amor , que narra como se siente una mujer amada y como el amor puede a llegar a ser amante y como se ve rechazada en la sociedad.",
+      "query": "amor",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T11:47:16.491Z"
+    },
+    {
+      "id": "231ef595-fb4c-4656-a554-2ae89e194cc5",
+      "title": "ESE ELIXIR LLAMADO AMOR",
+      "author": "RAMTHA",
+      "description": "Arkano Books, 2004, Madrid, Rústica con solapa, .23x15 cm, 245 pp. Muy buen estado. Libro que tratar de explorar la paradoja del amor reflexionando sobre la verdad de la atracción sexual, las fantasías secretas y la magia del amor verdadero.",
+      "query": "amor",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T11:47:16.491Z"
+    },
+    {
+      "id": "d1241a02-4dc7-41bd-95e2-98d1a40c7399",
+      "title": "EL AMOR EN OCCIDENTE",
+      "author": "JACQUES SOLÉ",
+      "description": "Librería Editorial Argos, Barcelona 1977. 363 pp, 20x13. Tapa blanda, señales paso del tiempo, buen estado. Es un repaso al amor en Occidente durante la Edad Moderna.",
+      "query": "amor",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T11:47:16.491Z"
+    },
+    {
+      "id": "8ab9533d-2026-4f8d-b1f6-c157be1486f3",
+      "title": "DE AMOR Y DE SOMBRA",
+      "author": "ISABEL ALLENDE",
+      "description": "Editorial Plaza y Janés S.A. 1995, Barcelóna. Rústico con solapa. 267 pp. 15X21,5. Buen estado.",
+      "query": "amor",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T11:47:16.491Z"
+    },
+    {
+      "id": "8b90639a-5cf2-468b-b575-f124ca6e8478",
+      "title": "VIDA EN EL AMOR",
+      "author": "ERNESTO CARDENAL",
+      "description": "Ediciones Sigueme. 1979. Salamanca. 169pp. 11,8x17,2cm. Cartoné. En buen estado de conservación.  Escrito por Ernesto Cardenal, este libro aborda la idea de que el amor es la ley fundamental de la vida y la creación. Cardenal, un poeta y sacerdote nicaragüense, ofrece una visión mística y espiritual del amor como el centro de la existencia.",
+      "query": "amor",
+      "userId": "2",
+      "recommendationDate": "2026-02-11T11:47:16.491Z"
     }
   ],
   "users": [
@@ -412,6 +619,12 @@
       "name": "John Doe",
       "email": "john@example.com",
       "password": "password"
+    },
+    {
+      "id": "2",
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "London1977@@"
     },
     {
       "id": "50c4"
