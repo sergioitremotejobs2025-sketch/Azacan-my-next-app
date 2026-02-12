@@ -6,4 +6,5 @@ export interface BookRecommendation {
     query: string;
     userId: string;
     recommendationDate: string;
+    productId?: number;
 }
